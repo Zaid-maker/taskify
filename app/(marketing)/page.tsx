@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const headingFont = localFont({
   src: "../../public/fonts/font.woff2",
 });
+
 const MarketingPage = () => {
   return (
     <div className="flex items-center justify-center flex-col">
