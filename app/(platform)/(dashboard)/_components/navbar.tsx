@@ -1,6 +1,7 @@
 import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
-import React from "react";
+import { Plus } from "lucide-react";
 
 export const Navbar = () => {
   return (
@@ -9,6 +10,20 @@ export const Navbar = () => {
         <div className="hidden md:flex">
           <Logo />
         </div>
+        <Button
+          variant="primary"
+          size="sm"
+          className="rounded-sm hidden md:block h-auto  py-1.5 px-2"
+        >
+          Create
+        </Button>
+        <Button
+          variant="primary"
+          size="sm"
+          className="rounded-sm block md:hidden"
+        >
+          <Plus className="h-4 w-4" />
+        </Button>
       </div>
       <div className="ml-auto flex items-center gap-x-2">
         <OrganizationSwitcher
