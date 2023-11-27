@@ -1,5 +1,5 @@
-import { startCase } from "lodash";
 import { auth } from "@clerk/nextjs";
+import { startCase } from "lodash";
 import React from "react";
 
 export async function generateMetadata() {
