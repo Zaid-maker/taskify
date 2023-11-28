@@ -2,6 +2,7 @@
 
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { useOrganization, useOrganizationList } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { useLocalStorage } from "usehooks-ts";
@@ -16,6 +17,15 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
     {}
   );
 
+  const { organization: activeOrganization, isLoaded: isLoadedOrg } =
+    useOrganization();
+
+  const { userMemberships, isLoaded: isLoadingOrgList } = useOrganizationList({
+    userMemberships: {
+      infinite: true,
+    },
+  });
+
   const defaultAccordionValue: string[] = Object.keys(expanded).reduce(
     (acc: string[], key: string) => {
       if (expanded[key]) {
@@ -26,6 +36,13 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
     },
     []
   );
+
+  const onExpand = (id: string) => {
+    setExpanded((curr) => ({
+      ...curr,
+      [id]: !expanded[id],
+    }));
+  };
 
   return (
     <>
@@ -48,7 +65,9 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
         defaultValue={defaultAccordionValue}
         className="space-y-2"
       >
-        test
+        {userMemberships.data?.map(({ organization }) => (
+          <div key={organization.id}>test</div>
+        ))}
       </Accordion>
     </>
   );
