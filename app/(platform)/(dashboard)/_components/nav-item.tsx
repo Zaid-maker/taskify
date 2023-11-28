@@ -35,10 +35,16 @@ export const NavItem = ({
           isActive && !isExpanded && "bg-sky-500/10 text-sky-700"
         )}
       >
-        <div>
-          <div>
-            <Image src={organization.imageUrl} alt="organization" />
+        <div className="flex items-center gap-x-2">
+          <div className="w-7 h-7 relative">
+            <Image
+              fill
+              src={organization.imageUrl}
+              alt="organization"
+              className="rounded-sm object-cover"
+            />
           </div>
+          <span className="font-medium text-sm">{organization.name}</span>
         </div>
       </AccordionTrigger>
     </AccordionItem>
