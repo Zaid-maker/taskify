@@ -1,11 +1,32 @@
 "use client";
 
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import { useLocalStorage } from "usehooks-ts";
 
-export const Sidebar = () => {
+interface SidebarProps {
+  storageKey?: string;
+}
+
+export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
+  const [expanded, setExpanded] = useLocalStorage<Record<string, any>>(
+    storageKey,
+    {}
+  );
+
+  const defaultAccordionValue: string[] = Object.keys(expanded).reduce(
+    (acc: string[], key: string) => {
+      if (expanded[key]) {
+        acc.push(key);
+      }
+
+      return acc;
+    },
+    []
+  );
+
   return (
     <>
       <div className="font-medium text-xs flex items-center mb-1">
@@ -22,6 +43,13 @@ export const Sidebar = () => {
           </Link>
         </Button>
       </div>
+      <Accordion
+        type="multiple"
+        defaultValue={defaultAccordionValue}
+        className="space-y-2"
+      >
+        test
+      </Accordion>
     </>
   );
 };
