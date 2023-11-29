@@ -65,7 +65,7 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
   return (
     <>
       <div className="font-medium text-xs flex items-center mb-1">
-        <span className="pl-4">Workspacess</span>
+        <span className="pl-4">Workspaces</span>
         <Button
           asChild
           type="button"
@@ -83,7 +83,7 @@ export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {
         defaultValue={defaultAccordionValue}
         className="space-y-2"
       >
-        {userMemberships.data?.map(({ organization }) => (
+        {userMemberships.data.map(({ organization }) => (
           <NavItem
             key={organization.id}
             isActive={activeOrganization?.id === organization.id}
