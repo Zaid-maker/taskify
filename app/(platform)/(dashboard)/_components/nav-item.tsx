@@ -59,6 +59,10 @@ export const NavItem = ({
     },
   ];
 
+  const onClick = (href: string) => {
+    router.push(href);
+  };
+
   return (
     <AccordionItem value={organization.id} className="border-none">
       <AccordionTrigger
@@ -73,7 +77,7 @@ export const NavItem = ({
             <Image
               fill
               src={organization.imageUrl}
-              alt="organization"
+              alt="Organization"
               className="rounded-sm object-cover"
             />
           </div>
@@ -85,6 +89,7 @@ export const NavItem = ({
           <Button
             key={route.href}
             size="sm"
+            onClick={() => onClick(route.href)}
             className={cn(
               "w-full font-normal justify-start pl-10 mb-1",
               pathname === route.href && "bg-sky-500/10 text-sky-700"
