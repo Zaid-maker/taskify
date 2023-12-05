@@ -1,7 +1,12 @@
-const OrganizationIdPage = () => {
+import { create } from "@/actions/create-board";
+import { db } from "@/lib/db";
+
+const OrganizationIdPage = async () => {
+  const boards = await db.board.findMany();
+
   return (
-    <div>
-      <form>
+    <div className="flex flex-col space-y-4">
+      <form action={create}>
         <input
           id="title"
           name="title"
@@ -10,6 +15,7 @@ const OrganizationIdPage = () => {
           className="border-black border p-1"
         />
       </form>
+      <div className="space-y-2"></div>
     </div>
   );
 };
