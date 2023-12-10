@@ -21,3 +21,14 @@ Full stack app written in next.js 14, Server Actions.
 - Postgres DB
 - Prisma ORM
 - shadcnUI & TailwindCSS
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
